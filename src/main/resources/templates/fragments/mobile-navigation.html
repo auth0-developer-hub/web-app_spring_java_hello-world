@@ -20,8 +20,21 @@
       <div class="mobile-nav-bar__tabs">
         <a class="mobile-nav-bar__tab" href="/profile">Profile</a>
         <a class="mobile-nav-bar__tab" href="/public">Public</a>
-        <a class="mobile-nav-bar__tab" href="/protected">Protected</a>
-        <a class="mobile-nav-bar__tab" href="/admin">Admin</a>
+        <th:block sec:authorize="isAuthenticated()">
+          <a class="mobile-nav-bar__tab" href="/protected">Protected</a>
+          <a class="mobile-nav-bar__tab" href="/admin">Admin</a>
+        </th:block>
+      </div>
+
+      <div class="mobile-nav-bar__buttons">
+        <th:block sec:authorize="!isAuthenticated()">
+          <a class="button__sign-up" th:href="@{/signup}">Sign Up</a>
+          <a class="button__login" th:href="@{/login}">Log In</a>
+        </th:block>
+
+        <th:block sec:authorize="isAuthenticated()">
+          <a class="button__logout" th:href="@{/logout}">Log Out</a>
+        </th:block>
       </div>
     </div>
   </nav>

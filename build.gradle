@@ -42,12 +42,18 @@ dependencies {
   developmentOnly('org.springframework.boot:spring-boot-devtools')
   sonarlintPlugins('org.sonarsource.java:sonar-java-plugin:7.12.0.29739')
 
+  implementation('com.github.joselion:maybe:2.1.1')
   implementation('io.github.cdimascio:dotenv-java:2.2.4')
   implementation('me.paulschwarz:spring-dotenv:2.5.4')
+  implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+  implementation('org.springframework.boot:spring-boot-starter-security')
   implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
   implementation('org.springframework.boot:spring-boot-starter-web')
+  implementation('org.springframework.session:spring-session-core')
+  implementation('org.thymeleaf.extras:thymeleaf-extras-springsecurity5')
 
   testImplementation('org.springframework.boot:spring-boot-starter-test')
+  testImplementation('org.springframework.security:spring-security-test')
 }
 
 tasks.named('test') {

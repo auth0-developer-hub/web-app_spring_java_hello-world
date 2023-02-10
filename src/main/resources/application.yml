@@ -9,6 +9,20 @@ spring:
       additional-paths:
       - src/main/resources/static
       - src/main/resources/templates
+  security:
+    oauth2:
+      client:
+        provider:
+          auth0:
+            issuer-uri: https://${env.AUTH0_DOMAIN}/
+        registration:
+          auth0:
+            client-id: ${env.AUTH0_CLIENT_ID}
+            client-secret: ${env.AUTH0_CLIENT_SECRET}
+            scope:
+              - openid
+              - profile
+              - email
   web:
     resources:
       chain:
