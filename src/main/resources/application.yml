@@ -1,5 +1,8 @@
 ---
 
+application:
+  api-server-url: ${env.API_SERVER_URL}
+
 server:
   port: ${env.PORT}
 
@@ -14,6 +17,7 @@ spring:
       client:
         provider:
           auth0:
+            authorization-uri: https://${env.AUTH0_DOMAIN}/authorize?audience=${env.AUTH0_AUDIENCE}
             issuer-uri: https://${env.AUTH0_DOMAIN}/
         registration:
           auth0:

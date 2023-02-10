@@ -1,0 +1,7 @@
+{
+  "properties": [{
+    "name": "application.api-server-url",
+    "type": "java.lang.String",
+    "description": "The base URL of the secure API the application will consume"
+  }]
+}

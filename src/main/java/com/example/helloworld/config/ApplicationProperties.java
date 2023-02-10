@@ -5,6 +5,6 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 
 @ConstructorBinding
 @ConfigurationProperties(prefix = "application")
-public record ApplicationProperties(String auth0CallbackUrl) {
+public record ApplicationProperties(String apiServerUrl) {
 
 }
