@@ -1,0 +1,18 @@
+<th:block th:fragment="pageLayout">
+  <th:block th:replace="~{fragments/header.html :: header}" />
+
+  <body>
+    <div class="page-layout">
+      <th:block th:replace="~{fragments/navigation.html :: navigation}" />
+      <th:block th:replace="~{fragments/mobile-navigation.html :: mobile-navigation}" />
+
+      <div class="page-layout__content">
+        <th:block th:replace="~{::#content}" />
+      </div>
+
+      <th:block th:replace="~{fragments/footer.html :: footer}" />
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+  </body>
+</th:block>

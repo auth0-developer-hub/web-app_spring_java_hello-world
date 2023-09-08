@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <th:block th:replace="~{fragments/page-layout.html :: pageLayout}">
+    <div id="content">
+      <div class="content-layout">
+        <h1 id="page-title" class="content__title">[[${title}]]</h1>
+
+        <div class="content__body" th:if="${description}">
+          <p id="page-description">
+            [[${description}]]
+          </p>
+        </div>
+      </div>
+    </div>
+  </th:block>
+</html>

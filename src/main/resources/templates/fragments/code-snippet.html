@@ -1,0 +1,18 @@
+<div class="code-snippet" th:fragment="codeSnippet(title, code)">
+  <span class="code-snippet__title">[[${title}]]</span>
+  <div class="code-snippet__container">
+    <div class="code-snippet__wrapper">
+      <pre class="code-snippet__body">[[${code}]]</pre>
+    </div>
+  </div>
+
+  <script type="text/javascript" th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", event => {
+      const element = document.getElementsByClassName("code-snippet__body").item(0);
+
+      if (element) {
+        element.textContent = JSON.stringify([[${code}]], undefined, 2);
+      }
+    });
+  </script>
+</div>

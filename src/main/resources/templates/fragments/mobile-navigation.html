@@ -1,0 +1,28 @@
+<div class="mobile-nav-bar__container" th:fragment="mobile-navigation">
+  <nav class="mobile-nav-bar">
+    <div class="mobile-nav-bar__brand">
+      <a href="/">
+        <img
+          class="mobile-nav-bar__logo"
+          src="https://cdn.auth0.com/blog/hub/code-samples/hello-world/auth0-logo.svg"
+          alt="Auth0 shield logo"
+          width="82"
+          height="24"
+        />
+      </a>
+    </div>
+
+    <span id="mobile-menu-toggle-button" class="mobile-nav-bar__toggle material-icons">
+      menu
+    </span>
+
+    <div id="mobile-menu" class="mobile-nav-bar__menu mobile-nav-bar__menu--closed">
+      <div class="mobile-nav-bar__tabs">
+        <a class="mobile-nav-bar__tab" href="/profile">Profile</a>
+        <a class="mobile-nav-bar__tab" href="/public">Public</a>
+        <a class="mobile-nav-bar__tab" href="/protected">Protected</a>
+        <a class="mobile-nav-bar__tab" href="/admin">Admin</a>
+      </div>
+    </div>
+  </nav>
+</div>

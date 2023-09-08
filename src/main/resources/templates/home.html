@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <th:block th:replace="~{fragments/page-layout.html :: pageLayout}">
+    <div id="content">
+      <div class="hero-banner hero-banner--emerald-yellow">
+        <div class="hero-banner__logo">
+          <img
+            class="hero-banner__image"
+            src="https://cdn.auth0.com/blog/developer-hub/spring-mvc-logo.svg"
+            alt="Spring logo"
+          />
+        </div>
+        <h1 class="hero-banner__headline">Hello, Spring World!</h1>
+        <p class="hero-banner__description">
+          This is a sample application that demonstrates the authentication flow for
+          Spring web apps using <strong>Auth0</strong>.
+        </p>
+        <a
+          id="code-sample-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://developer.auth0.com/resources/code-samples/web-app/spring/basic-authentication"
+          class="button button--secondary"
+        >
+          Check out the Spring code sample →
+        </a>
+      </div>
+
+      <div class="auth0-features">
+        <h2 class="auth0-features__title">Explore Auth0 Features</h2>
+        <div class="auth0-features__grid">
+          <th:block th:each="feature : ${features}">
+            <a
+              th:href="${feature.url}"
+              class="auth0-feature"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <h3 class="auth0-feature__headline">
+                <img
+                  class="auth0-feature__icon"
+                  th:src="${feature.imageSrc}"
+                  alt="external link icon"
+                />
+                [[${feature.title}]]
+              </h3>
+              <p class="auth0-feature__description">
+                [[${feature.description}]]
+              </p>
+            </a>
+          </th:block>
+        </div>
+      </div>
+    </div>
+  </th:block>
+</html>

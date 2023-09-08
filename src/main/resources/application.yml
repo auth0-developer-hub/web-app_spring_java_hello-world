@@ -1,0 +1,25 @@
+---
+
+server:
+  port: ${PORT}
+
+spring:
+  devtools:
+    restart:
+      additional-paths:
+        - src/main/resources/static
+        - src/main/resources/templates
+  web:
+    resources:
+      chain:
+        strategy:
+          content:
+            enabled: true
+            paths:
+              - /**
+      cache:
+        cachecontrol:
+          max-age: 31536000
+          must-revalidate: true
+
+...

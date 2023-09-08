@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <th:block th:replace="~{fragments/page-layout.html :: pageLayout}">
+    <div id="content">
+      <div class="content-layout">
+        <h1 id="page-title" class="content__title">Profile Page</h1>
+        <div class="content__body">
+          <p id="page-description">
+            <span>
+              <strong>Only authenticated users should access this page.</strong>
+            </span>
+          </p>
+          <div class="profile-grid">
+            <div class="profile__header">
+              <img th:src="${profile.picture}" alt="Profile" class="profile__avatar" />
+              <div class="profile__headline">
+                <h2 class="profile__title">[[${profile.name}]]</h2>
+                <span class="profile__description">[[${profile.email}]]</span>
+              </div>
+            </div>
+            <div class="profile__details">
+              <th:block th:replace="~{fragments/code-snippet.html
+                :: codeSnippet('User Profile Object', ${profile})}"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+</html>
