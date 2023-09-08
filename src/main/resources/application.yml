@@ -1,5 +1,8 @@
 ---
 
+application:
+  api-server-url: ${API_SERVER_URL}
+
 server:
   port: ${PORT}
 
@@ -27,5 +30,6 @@ okta:
     issuer: ${OKTA_OAUTH2_ISSUER}
     client-id: ${OKTA_OAUTH2_CLIENT_ID}
     client-secret: ${OKTA_OAUTH2_CLIENT_SECRET}
+    audience: ${OKTA_OAUTH2_AUDIENCE}
 
 ...

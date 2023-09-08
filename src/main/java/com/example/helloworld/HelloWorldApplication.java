@@ -18,7 +18,9 @@ public class HelloWorldApplication {
         PORT,
         OKTA_OAUTH2_ISSUER,
         OKTA_OAUTH2_CLIENT_ID,
-        OKTA_OAUTH2_CLIENT_SECRET
+        OKTA_OAUTH2_CLIENT_SECRET,
+        OKTA_OAUTH2_AUDIENCE,
+        API_SERVER_URL
     }
 
     public static void main(final String[] args) {

@@ -1,11 +1,17 @@
 package com.example.helloworld.config.security;
 
+import java.util.function.Consumer;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.web.DefaultOAuth2AuthorizationRequestResolver;
+import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestResolver;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,6 +27,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+    @Value("${okta.oauth2.audience}")
+    private String audience;
+
     private final ClientRegistrationRepository clientRegistrationRepo;
 
     @Bean
@@ -31,6 +40,9 @@ public class SecurityConfig {
                         .authenticated().anyRequest()
                         .permitAll())
                 .oauth2Login(loginConfig -> loginConfig
+                        .authorizationEndpoint(authorization -> authorization
+                                .authorizationRequestResolver(
+                                        authorizationRequestResolver(this.clientRegistrationRepo)))
                         .loginPage("/login")
                         .defaultSuccessUrl("/profile", true))
                 .logout(logoutConfig -> logoutConfig
@@ -63,4 +75,21 @@ public class SecurityConfig {
                 .runEffect(response::sendRedirect)
                 .orThrow(RuntimeException::new);
     }
+
+    private OAuth2AuthorizationRequestResolver authorizationRequestResolver(
+            final ClientRegistrationRepository clientRegistrationRepository) {
+
+        DefaultOAuth2AuthorizationRequestResolver authzRequestResolver = new DefaultOAuth2AuthorizationRequestResolver(
+                clientRegistrationRepository, "/oauth2/authorization");
+        authzRequestResolver.setAuthorizationRequestCustomizer(
+                authorizationRequestCustomizer());
+
+        return authzRequestResolver;
+    }
+
+    private Consumer<OAuth2AuthorizationRequest.Builder> authorizationRequestCustomizer() {
+        return customizer -> customizer
+                .additionalParameters(params -> params.put("audience", audience));
+    }
+
 }
