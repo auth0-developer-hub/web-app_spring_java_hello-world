@@ -7,7 +7,11 @@
         <div class="content__body">
           <p id="page-description">
             <span>
-              <strong>Only authenticated users should access this page.</strong>
+              You can use the <strong>ID Token</strong> to get the profile information
+              of an authenticated user.
+            </span>
+            <span>
+              <strong>Only authenticated users can access this page.</strong>
             </span>
           </p>
           <div class="profile-grid">
@@ -20,7 +24,7 @@
             </div>
             <div class="profile__details">
               <th:block th:replace="~{fragments/code-snippet.html
-                :: codeSnippet('User Profile Object', ${profile})}"
+                :: codeSnippet('Decoded ID Token', ${profile})}"
               />
             </div>
           </div>

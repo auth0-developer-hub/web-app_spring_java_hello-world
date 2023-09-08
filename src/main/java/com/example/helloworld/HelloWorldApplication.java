@@ -4,16 +4,21 @@ import static java.util.Arrays.stream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @SpringBootApplication
+@ConfigurationPropertiesScan
 public class HelloWorldApplication {
 
     enum DotEnv {
-        PORT
+        PORT,
+        OKTA_OAUTH2_ISSUER,
+        OKTA_OAUTH2_CLIENT_ID,
+        OKTA_OAUTH2_CLIENT_SECRET
     }
 
     public static void main(final String[] args) {
